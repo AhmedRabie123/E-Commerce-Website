@@ -8,14 +8,21 @@ use Auth;
 
 class HomeController extends Controller
 {
+
+    public function index()
+    {
+        return view('Front.userpage');
+    }
+
+
     public function redirect()
     {
         $user_type = Auth::user()->usertype;
 
-        if($user_type == '1'){
-          return view('Admin.home');
-        }else{
-            return view('dashboard');
+        if ($user_type == '1') {
+            return view('Admin.home');
+        } else {
+            return view('Front.userpage');
         }
     }
 }

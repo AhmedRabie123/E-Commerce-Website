@@ -1,17 +1,20 @@
-<x-app-layout>
-
-</x-app-layout>
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Admin</h2>
-</body>
+  <head>
+    <!-- Required meta tags -->
+    @include('Admin.css')
+  </head>
+  <body>
+    <div class="container-scroller" dir="rtl">
+      <!-- partial:partials/_sidebar.html -->
+        @include('Admin.sidebar')
+      <!-- partial -->
+        @include('Admin.header')
+        <!-- partial -->
+        @include('Admin.body')
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    @include('Admin.script')
+    <!-- End custom js for this page -->
+  </body>
 </html>

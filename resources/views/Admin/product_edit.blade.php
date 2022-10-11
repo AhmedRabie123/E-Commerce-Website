@@ -3,6 +3,7 @@
 
 <head>
     <!-- Required meta tags -->
+    <base href="/public">
     @include('Admin.css')
 </head>
 
@@ -29,55 +30,62 @@
 
 
                 <div class="section-body">
-                    <form action="{{ route('product_store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('product_update', $product_single->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
 
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 style="text-align: center; font-size: 30px;">إضافة منتج</h5>
+                                        <h5 style="text-align: center; font-size: 30px;">تعديل المنتج</h5>
 
                                         <div class="form-group mb-3">
                                             <label>* عنوان المنتج</label>
-                                            <input type="text" style="color: beige;" class="form-control" name="title" value="" placeholder="عنوان المنتج" required="">
+                                            <input type="text" style="color: beige;" class="form-control" name="title" value="{{ $product_single->title }}" placeholder="عنوان المنتج" required="">
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label>* وصف المنتج</label> 
-                                            <textarea name="description" style="color: beige;" class="form-control" cols="30" rows="10" placeholder="وصف المنتج" required=""></textarea>
+                                            <textarea name="description" style="color: beige;" class="form-control" cols="30" rows="10" placeholder="وصف المنتج" required="">{{ $product_single->description }}</textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label>* صورة المنتج</label>
-                                            <div> <input type="file" name="image" required=""> </div>
-                                        </div>
+                                            <label>الصوره الحاليه</label>
+                                            <div> 
+                                                <img src="{{ asset('images/'. $product_single->image) }}" style="height: 150px" alt="">
+                                            </div>
+                                        </div><br>
 
                                         <div class="form-group mb-3">
+                                            <label>إختيار صوره جديده</label>
+                                            <div> <input type="file" name="image"> </div>
+                                        </div> 
+
+                                      <div class="form-group mb-3">
                                             <label>* الفئه</label>
                                             <select name="category_id" class="form-control select2" required="" style="color: beige;">
-                                                {{-- <option value="">* فئة المنتج</option> --}}
-                                                @foreach ($categories as $item)
-                                                    <option value="{{ $item->id }}">
+                                                 <option value="">* فئة المنتج</option> 
+                                                 @foreach ($categories as $item)
+                                                    <option value="{{ $item->id }}" selected>
                                                         {{ $item->category_name }}
                                                     </option>
                                                 @endforeach 
                                             </select>
-                                        </div>
+                                     </div>  
 
                                         <div class="form-group mb-3">
                                             <label>* كميه المنتج</label>
-                                            <input type="number" style="color: beige;" class="form-control" name="quantity" value="" placeholder="كمية المنج" required="">
+                                            <input type="number" style="color: beige;" class="form-control" name="quantity" value="{{ $product_single->quantity }}" placeholder="كمية المنج" required="">
                                         </div>
                                      
                                         <div class="form-group mb-3">
                                             <label>* سعر المنتج</label>
-                                            <input type="number" style="color: beige;" class="form-control" name="price" value="" placeholder="سعر المنتج" required="">
+                                            <input type="number" style="color: beige;" class="form-control" name="price" value="{{ $product_single->price }}" placeholder="سعر المنتج" required="">
                                         </div>
                                       
                                         <div class="form-group mb-3">
                                             <label>سعر الخصم</label>
-                                            <input type="number" style="color: beige;" class="form-control" name="discount_price" value="" placeholder="سعر الخصم علي المنتج">
+                                            <input type="number" style="color: beige;" class="form-control" name="discount_price" value="{{ $product_single->discount_price }}" placeholder="سعر الخصم علي المنتج">
                                         </div>
                                       
                                     </div>
@@ -87,7 +95,7 @@
 
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">حفظ</button>
+                            <button type="submit" class="btn btn-primary">تعديل</button>
                         </div>
                     </form>
                 </div>

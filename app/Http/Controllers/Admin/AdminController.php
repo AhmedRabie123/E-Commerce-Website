@@ -9,6 +9,13 @@ use App\Models\product;
 
 class AdminController extends Controller
 {
+  
+    // admin home (dashboard)
+
+    public function index()
+    {
+        return view('Admin.home');
+    }
 
     //category function
 
@@ -75,7 +82,7 @@ class AdminController extends Controller
     { 
 
         $categories = category::get();
-        //$products = product::with('rCategory')->get();
+       // $products = product::with('rCategory')->get();
         return view('Admin.product_create', compact('categories'));
     }
 
@@ -93,6 +100,15 @@ class AdminController extends Controller
           ]);
 
         $products = new product();
+  
+        $now = time();
+        $ext = $request->file('image')->extension();
+        $final_name = 'product_'. '.' .$now. '.' .$ext;
+        $request->file('image')->move(public_path('images/'), $final_name);
+        
+        $products->image = $final_name;
+
+
         $products->title = $request->title;
         $products->description = $request->description;
         $products->category_id = $request->category_id;
@@ -107,7 +123,8 @@ class AdminController extends Controller
     public function product_edit($id)
     {
         $product_single = product::where('id', $id)->first();
-        return view('Admin.product_edit', compact('product_single'));
+        $categories = category::get();
+        return view('Admin.product_edit', compact('product_single','categories'));
     }
 
     public function product_update(Request $request, $id)
@@ -116,14 +133,33 @@ class AdminController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpg,png,gif,svg,jpeg',
             'category_id' => 'required',
             'quantity' => 'required',
             'price' => 'required'
            
           ]);
 
-        $product = product::where('id', $id)->first();
+          $product = product::where('id', $id)->first();
+
+
+          if($request->hasFile('image')){
+
+            $request->validate([
+                'image' => 'image|mimes:jpg,png,gif,svg,jpeg',
+            ]);
+
+             unlink(public_path('images/'. $product->image));
+
+             $now = time();
+             $ext = $request->file('image')->extension();
+             $final_name = 'product_'. '.' .$now. '.' .$ext;
+             $request->file('image')->move(public_path('images/'), $final_name);
+             
+             $product->image = $final_name;
+
+          }
+
+        
         $product->title = $request->title;
         $product->description = $request->description;
         $product->category_id = $request->category_id;
@@ -138,6 +174,7 @@ class AdminController extends Controller
     public function product_delete($id)
     {
         $product_single = product::where('id', $id)->first();
+        unlink(public_path('images/'. $product_single->image));
         $product_single->delete();
 
         return redirect()->route('product')->with('success', 'تم حذف المنتج بنجاح');

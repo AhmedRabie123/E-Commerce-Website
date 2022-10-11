@@ -29,6 +29,7 @@ Route::middleware([
 
 route::get('/redirect', [HomeController::class, 'redirect'])->name('redirect');
 
+route::get('/home', [AdminController::class, 'index'])->name('home');
 
 // category route
 

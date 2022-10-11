@@ -25,6 +25,7 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
+
                 <a href="{{ route('product_create') }}"><button type="button" class="btn btn-primary">إضافة
                         منتج</button></a>
 
@@ -36,15 +37,15 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="example1">
                                             <thead>
-                                                <tr>
+                                                <tr style="background: rgb(43, 62, 72);">
                                                     <th>SL</th>
-                                                    <th>image</th>
-                                                    <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>Category</th>
-                                                    <th>quantity</th>
-                                                    <th>price</th>
-                                                    <th>discount_price</th>
+                                                    <th>صورة المنتج</th>
+                                                    <th>عنوان المنتج</th>
+                                                    <th>وصف المنتج</th>
+                                                    <th>فئة المنتج</th>
+                                                    <th>الكميه المتوفره</th>
+                                                    <th>السعر</th>
+                                                    <th>قيمة الخصم</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -52,21 +53,21 @@
 
                                                 @foreach ($products as $row)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td style="color:beige;">{{ $loop->iteration }}</td>
                                                         <td>
-                                                            <img src="{{ asset('uploads/' . $row->post_photo) }}"
-                                                                alt="" style="width:100px;">
+                                                            <img src="{{ asset('images/' . $row->image) }}"
+                                                                alt="" style="height: 86px;">
                                                         </td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td style="color:beige;">{{ $row->title }}</td>
+                                                        <td style="color:beige;">{{ $row->description }}</td>
+                                                        <td style="color:beige;">{{ $row->category_id }}</td>
+                                                        <td style="color:beige;">{{ $row->quantity }}</td>
+                                                        <td style="color:beige;">{{ $row->price }}</td>
+                                                        <td style="color:beige;">{{ $row->discount_price }}</td>
                                                         <td class="pt_10 pb_10">
-                                                            <a href="{{ route('admin_post_edit', $row->id) }}"
+                                                            <a href="{{ route('product_edit', $row->id) }}"
                                                                 class="btn btn-primary">Edit</a>
-                                                            <a href="{{ route('admin_post_delete', $row->id) }}"
+                                                            <a href="{{ route('product_delete', $row->id) }}"
                                                                 class="btn btn-danger"
                                                                 onClick="return confirm('Are you sure?');">Delete</a>
                                                         </td>

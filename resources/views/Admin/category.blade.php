@@ -25,6 +25,7 @@
                       {{ session()->get('success') }}
                   </div>
                 @endif
+                
                <a href="{{ route('category_create') }}"><button type="button" class="btn btn-primary">إضافة فئه</button></a>
                 <div class="section-body" >
                     <div class="row">

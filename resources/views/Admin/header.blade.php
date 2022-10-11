@@ -12,14 +12,14 @@
             <ul class="navbar-nav w-100">
                 <li class="nav-item w-100">
                     <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                        <input type="text" class="form-control" placeholder="Search products">
+                        <input type="text" class="form-control" placeholder="البحث عن المنتجات">
                     </form>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown d-none d-lg-block">
                     <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown"
-                        data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                        data-toggle="dropdown" aria-expanded="false" href="#">+ إنشاء مشروع جديد</a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                         aria-labelledby="createbuttonDropdown">
                         <h6 class="p-3 mb-0">Projects</h6>
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Software Development</p>
+                                <p class="preview-subject ellipsis mb-1">تطوير البرمجيات</p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">UI Development</p>
+                                <p class="preview-subject ellipsis mb-1">تطوير واجهة المستخدم</p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -53,11 +53,11 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                                <p class="preview-subject ellipsis mb-1">اختبار البرمجيات</p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <p class="p-3 mb-0 text-center">See all projects</p>
+                        <p class="p-3 mb-0 text-center">رؤية كل المشاريع</p>
                     </div>
                 </li>
                 <li class="nav-item nav-settings d-none d-lg-block">
@@ -73,7 +73,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                         aria-labelledby="messageDropdown">
-                        <h6 class="p-3 mb-0">Messages</h6>
+                        <h6 class="p-3 mb-0">رسائل</h6>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
@@ -81,8 +81,8 @@
                                     class="rounded-circle profile-pic">
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                                <p class="text-muted mb-0"> 1 Minutes ago </p>
+                                <p class="preview-subject ellipsis mb-1">مارك يرسل لك رسالة</p>
+                                <p class="text-muted mb-0">قبل دقيقة </p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -92,8 +92,8 @@
                                     class="rounded-circle profile-pic">
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                                <p class="text-muted mb-0"> 15 Minutes ago </p>
+                                <p class="preview-subject ellipsis mb-1">كريغ يرسل لك رسالة</p>
+                                <p class="text-muted mb-0"> منذ 15 دقيقة </p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -103,12 +103,12 @@
                                     class="rounded-circle profile-pic">
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                                <p class="text-muted mb-0"> 18 Minutes ago </p>
+                                <p class="preview-subject ellipsis mb-1">تم تحديث صورة الملف الشخصي</p>
+                                <p class="text-muted mb-0"> قبل 18 دقيقة </p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <p class="p-3 mb-0 text-center">4 new messages</p>
+                        <p class="p-3 mb-0 text-center">4 رسائل جديدة</p>
                     </div>
                 </li>
                 <li class="nav-item dropdown border-left">
@@ -119,7 +119,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                         aria-labelledby="notificationDropdown">
-                        <h6 class="p-3 mb-0">Notifications</h6>
+                        <h6 class="p-3 mb-0">إشعارات</h6>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
@@ -128,8 +128,8 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject mb-1">Event today</p>
-                                <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
+                                <p class="preview-subject mb-1">حدث اليوم</p>
+                                <p class="text-muted ellipsis mb-0"> مجرد تذكير بأن لديك حدثًا اليوم </p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -140,8 +140,8 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject mb-1">Settings</p>
-                                <p class="text-muted ellipsis mb-0"> Update dashboard </p>
+                                <p class="preview-subject mb-1">إعدادات</p>
+                                <p class="text-muted ellipsis mb-0"> تحديث لوحة التحكم </p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -152,12 +152,12 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject mb-1">Launch Admin</p>
-                                <p class="text-muted ellipsis mb-0"> New admin wow! </p>
+                                <p class="preview-subject mb-1">إطلاق المسؤول</p>
+                                <p class="text-muted ellipsis mb-0">مشرف جديد رائع!</p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <p class="p-3 mb-0 text-center">See all notifications</p>
+                        <p class="p-3 mb-0 text-center">اطلع على جميع الإشعارات</p>
                     </div>
                 </li>
                 <li>

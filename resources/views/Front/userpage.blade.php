@@ -24,7 +24,17 @@
 </head>
 
 <body>
+
     <div class="hero_area">
+ 
+        {{-- if for message success --}}
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {{ session()->get('success') }}
+            </div>
+        @endif
+
         <!-- header section strats -->
         @include('Front.header')
         <!-- end header section -->
@@ -54,9 +64,10 @@
     @include('Front.footer')
     <!-- footer end -->
     <div class="cpy_">
-        <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+        <p class="mx-auto"><a href="https://web.facebook.com/ahmed.rabea.10048/">Ahmed Rabie</a> جميع الحقوق محفوظه لدي
+            © 2021<br>
 
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+            وزعت من خلال <a href="https://themewagon.com/" target="_blank">Ahmed Rabie</a>
 
         </p>
     </div>

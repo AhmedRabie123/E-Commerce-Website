@@ -26,11 +26,13 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
-                <a href="{{ route('product') }}"><button type="button" class="btn btn-primary">عرض المنتجات</button></a>
+                <a href="{{ route('product') }}"><button type="button" class="btn btn-primary">عرض
+                        المنتجات</button></a>
 
 
                 <div class="section-body">
-                    <form action="{{ route('product_update', $product_single->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('product_update', $product_single->id) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row">
 
@@ -41,53 +43,64 @@
 
                                         <div class="form-group mb-3">
                                             <label>* عنوان المنتج</label>
-                                            <input type="text" style="color: beige;" class="form-control" name="title" value="{{ $product_single->title }}" placeholder="عنوان المنتج" required="">
+                                            <input type="text" style="color: beige;" class="form-control"
+                                                name="title" value="{{ $product_single->title }}"
+                                                placeholder="عنوان المنتج" required="">
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label>* وصف المنتج</label> 
-                                            <textarea name="description" style="color: beige;" class="form-control" cols="30" rows="10" placeholder="وصف المنتج" required="">{{ $product_single->description }}</textarea>
+                                            <label>* وصف المنتج</label>
+                                            <textarea name="description" style="color: beige;" class="form-control" cols="30" rows="10"
+                                                placeholder="وصف المنتج" required="">{{ $product_single->description }}</textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label>الصوره الحاليه</label>
-                                            <div> 
-                                                <img src="{{ asset('images/'. $product_single->image) }}" style="height: 150px" alt="">
+                                            <div>
+                                                <img src="{{ asset('images/' . $product_single->image) }}"
+                                                    style="height: 150px" alt="">
                                             </div>
                                         </div><br>
 
                                         <div class="form-group mb-3">
                                             <label>إختيار صوره جديده</label>
                                             <div> <input type="file" name="image"> </div>
-                                        </div> 
+                                        </div>
 
-                                      <div class="form-group mb-3">
+                                        <div class="form-group mb-3">
                                             <label>* الفئه</label>
-                                            <select name="category_id" class="form-control select2" required="" style="color: beige;">
-                                                 <option value="">* فئة المنتج</option> 
-                                                 @foreach ($categories as $item)
-                                                    <option value="{{ $item->id }}" selected>
-                                                        {{ $item->category_name }}
-                                                    </option>
-                                                @endforeach 
+                                            <select name="category_id" class="form-control select2" required=""
+                                                style="color: beige;">
+                                                <option value="">* فئة المنتج</option>
+                                                @foreach ($categories as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        @if ($product_single->category_id == $item->id) selected @endif>
+                                                        {{ $item->category_name }} </option>
+                                                @endforeach
                                             </select>
-                                     </div>  
+                                        </div>
 
                                         <div class="form-group mb-3">
                                             <label>* كميه المنتج</label>
-                                            <input type="number" style="color: beige;" class="form-control" name="quantity" value="{{ $product_single->quantity }}" placeholder="كمية المنج" required="">
+                                            <input type="number" style="color: beige;" class="form-control"
+                                                name="quantity" value="{{ $product_single->quantity }}"
+                                                placeholder="كمية المنج" required="">
                                         </div>
-                                     
+
                                         <div class="form-group mb-3">
                                             <label>* سعر المنتج</label>
-                                            <input type="number" style="color: beige;" class="form-control" name="price" value="{{ $product_single->price }}" placeholder="سعر المنتج" required="">
+                                            <input type="number" style="color: beige;" class="form-control"
+                                                name="price" value="{{ $product_single->price }}"
+                                                placeholder="سعر المنتج" required="">
                                         </div>
-                                      
+
                                         <div class="form-group mb-3">
                                             <label>سعر الخصم</label>
-                                            <input type="number" style="color: beige;" class="form-control" name="discount_price" value="{{ $product_single->discount_price }}" placeholder="سعر الخصم علي المنتج">
+                                            <input type="number" style="color: beige;" class="form-control"
+                                                name="discount_price" value="{{ $product_single->discount_price }}"
+                                                placeholder="سعر الخصم علي المنتج">
                                         </div>
-                                      
+
                                     </div>
                                 </div>
                             </div>

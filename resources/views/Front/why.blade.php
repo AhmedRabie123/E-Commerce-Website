@@ -2,7 +2,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                Why Shop With Us
+                لماذا تتسوق معنا
             </h2>
         </div>
         <div class="row">
@@ -105,10 +105,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Fast Delivery
+                            توصيل سريع
                         </h5>
                         <p>
-                            variations of passages of Lorem Ipsum available
+                            تتوفر أشكال مختلفة من مقاطع لوريم إيبسوم
                         </p>
                     </div>
                 </div>
@@ -233,10 +233,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Free Shiping
+                            الشحن مجانا
                         </h5>
                         <p>
-                            variations of passages of Lorem Ipsum available
+                            تتوفر أشكال مختلفة من مقاطع لوريم إيبسوم
                         </p>
                     </div>
                 </div>
@@ -258,10 +258,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Best Quality
+                            أفضل جودة
                         </h5>
                         <p>
-                            variations of passages of Lorem Ipsum available
+                            تتوفر أشكال مختلفة من مقاطع لوريم إيبسوم
                         </p>
                     </div>
                 </div>

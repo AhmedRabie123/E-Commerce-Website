@@ -2,7 +2,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                Customer's Testimonial
+                شهادة الزبون
             </h2>
         </div>
         <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
@@ -18,15 +18,18 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Anna Trevor
+                                آنا تريفور
                             </h5>
                             <h6>
-                                Customer
+                                عميل
                             </h6>
                             <p>
-                                Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde
-                                quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum
-                                ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                                هي منصة رقمية شاملة موجودة لمَن يحلم ببيع، الترويج أو شراء كورسات اونلاين، فيديوهات،
+                                اشتراكات، كتب الكترونية ebooks، تذاكر من أجل الأحداث أو أي وسيلة أو صيغة رقمية أخرى
+                                للمواد الرقمية. إذا كنت تخطط للبدء ببزنس اونلاين من الصفر، أو استئناف عمل تجاري رقمي في
+                                حالة ركود، التقدم في مشوارك المهني واكتساب المعارف والمهارات الأخرى، أو التسويق لمنتجات
+                                رقمية للجمهور، تعد المنصة هوت مارت الشريك المثالي لك، باعتبار أنها تقدم لك كل ما تحتاج
+                                إليه، ويمكنك البدء من خلال بعض الخطوات والنقرات وحسب.
                             </p>
                         </div>
                     </div>
@@ -42,15 +45,18 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Anna Trevor
+                                آنا تريفور
                             </h5>
                             <h6>
-                                Customer
+                                عميل
                             </h6>
                             <p>
-                                Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde
-                                quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum
-                                ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                                هي منصة رقمية شاملة موجودة لمَن يحلم ببيع، الترويج أو شراء كورسات اونلاين، فيديوهات،
+                                اشتراكات، كتب الكترونية ebooks، تذاكر من أجل الأحداث أو أي وسيلة أو صيغة رقمية أخرى
+                                للمواد الرقمية. إذا كنت تخطط للبدء ببزنس اونلاين من الصفر، أو استئناف عمل تجاري رقمي في
+                                حالة ركود، التقدم في مشوارك المهني واكتساب المعارف والمهارات الأخرى، أو التسويق لمنتجات
+                                رقمية للجمهور، تعد المنصة هوت مارت الشريك المثالي لك، باعتبار أنها تقدم لك كل ما تحتاج
+                                إليه، ويمكنك البدء من خلال بعض الخطوات والنقرات وحسب.
                             </p>
                         </div>
                     </div>
@@ -66,28 +72,29 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Anna Trevor
+                                آنا تريفور
                             </h5>
                             <h6>
-                                Customer
+                                عميل
                             </h6>
                             <p>
-                                Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde
-                                quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum
-                                ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                                هي منصة رقمية شاملة موجودة لمَن يحلم ببيع، الترويج أو شراء كورسات اونلاين، فيديوهات،
+                                اشتراكات، كتب الكترونية ebooks، تذاكر من أجل الأحداث أو أي وسيلة أو صيغة رقمية أخرى
+                                للمواد الرقمية. إذا كنت تخطط للبدء ببزنس اونلاين من الصفر، أو استئناف عمل تجاري رقمي في
+                                حالة ركود، التقدم في مشوارك المهني واكتساب المعارف والمهارات الأخرى، أو التسويق لمنتجات
+                                رقمية للجمهور، تعد المنصة هوت مارت الشريك المثالي لك، باعتبار أنها تقدم لك كل ما تحتاج
+                                إليه، ويمكنك البدء من خلال بعض الخطوات والنقرات وحسب.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel_btn_box">
-                <a class="carousel-control-prev" href="#carouselExample3Controls" role="button"
-                    data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExample3Controls" role="button" data-slide="prev">
                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExample3Controls" role="button"
-                    data-slide="next">
+                <a class="carousel-control-next" href="#carouselExample3Controls" role="button" data-slide="next">
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>

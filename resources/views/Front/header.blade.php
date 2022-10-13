@@ -1,7 +1,7 @@
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>
+            <a class="navbar-brand" href="{{ url('/') }}"><img width="250" src="images/logo.png" alt="#" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> </span>
@@ -9,25 +9,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url('/') }}">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span
+                            aria-haspopup="true" aria-expanded="true"> <span class="nav-label">الصفحات <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="testimonial.html">Testimonial</a></li>
+                            <li><a href="about.html">عننا</a></li>
+                            <li><a href="testimonial.html">الشهادات - التوصيات</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product.html">Products</a>
+                        <a class="nav-link" href="product.html">المنتجات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog_list.html">Blog</a>
+                        <a class="nav-link" href="blog_list.html">مقالات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.html">تواصل معنا</a>
                     </li>
 
                     <form class="form-inline">
@@ -45,11 +45,11 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="btn btn-primary" href="{{ route('login') }}" style="margin-right: 10px;">Login</a>
+                                <a class="btn btn-primary" href="{{ route('login') }}" style="margin-right: 10px;">تسجيل الدخول</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="btn btn-info" href="{{ route('register') }}">Register</a>
+                                <a class="btn btn-info" href="{{ route('register') }}">تسجيل مستخدم جديد</a>
                             </li>
                         @endauth
                     @endif

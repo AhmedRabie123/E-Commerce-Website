@@ -49,3 +49,12 @@ Route::get('/product-edit/{id}',[AdminController::class, 'product_edit'])->name(
 Route::post('/product-update/{id}',[AdminController::class, 'product_update'])->name('product_update');
 Route::get('/product-delete/{id}',[AdminController::class, 'product_delete'])->name('product_delete');
 
+
+// product Detail Page
+Route::get('/product-detail/{id}', [HomeController::class, 'detail'])->name('product_detail');
+
+
+
+// add to cart Page
+
+Route::post('/add-cart/{id}', [HomeController::class, 'add_cart'])->name('add_cart');

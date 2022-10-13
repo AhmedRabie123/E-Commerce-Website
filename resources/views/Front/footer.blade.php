@@ -8,8 +8,8 @@
                     </div>
                     <div class="information_f">
                         <p><strong>العنوان:</strong>شارع عبد المنعم رياض مركز بركة السبع محافظة المنوفيه</p>
-                        <p><strong>رقم التليفون:</strong> +201015777094</p>
-                        <p><strong>البريد الالكتروني:</strong> ar7933870@gmail.com</p>
+                        <p><strong>رقم التليفون:</strong>+201015777094</p>
+                        <p><strong>البريد الالكتروني:</strong>ar7933870@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -21,12 +21,12 @@
                                 <div class="widget_menu">
                                     <h3>القائمه</h3>
                                     <ul>
-                                        <li><a href="#">الصفحةالرئيسيه</a></li>
+                                        <li><a href="/">الصفحةالرئيسيه</a></li>
                                         <li><a href="#">عننا</a></li>
-                                        <li><a href="#">الخدمات</a></li>
-                                        <li><a href="#">الشهادات</a></li>
+                                        <li><a href="#Services">الخدمات</a></li>
+                                        <li><a href="#Testimonials ">الشهادات</a></li>
                                         <li><a href="#">المقالات</a></li>
-                                        <li><a href="#">تواصل معنا</a></li>
+                                        <li><a href="#subscribe">تواصل معنا</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -36,9 +36,9 @@
                                     <ul>
                                         <li><a href="#">الحساب</a></li>
                                         <li><a href="#">الدفع</a></li>
-                                        <li><a href="#">تسجيل الدخول</a></li>
-                                        <li><a href="#">تسجيل مستخدم جديد</a></li>
-                                        <li><a href="#">التسوق</a></li>
+                                        <li><a href="/login">تسجيل الدخول</a></li>
+                                        <li><a href="/register">تسجيل مستخدم جديد</a></li>
+                                        <li><a href="{{ route('show_cart') }}">التسوق</a></li>
                                         <li><a href="#">القطعة</a></li>
                                     </ul>
                                 </div>

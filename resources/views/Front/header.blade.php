@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ url('/') }}">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
@@ -17,17 +17,21 @@
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="about.html">عننا</a></li>
-                            <li><a href="testimonial.html">الشهادات - التوصيات</a></li>
+                            <li><a href="#Testimonials ">الشهادات & التوصيات</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product.html">المنتجات</a>
+                        <a class="nav-link" href="#product">المنتجات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog_list.html">مقالات</a>
+                        <a class="nav-link" href="#Services">الخدمات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">تواصل معنا</a>
+                        <a class="nav-link" href="#subscribe">تواصل معنا</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('show_cart') }}">عربة التسوق</a>
                     </li>
 
                     <form class="form-inline">

@@ -1,4 +1,4 @@
-<section class="subscribe_section">
+<section class="subscribe_section" id="subscribe">
     <div class="container-fuild">
         <div class="box">
             <div class="row">
@@ -9,7 +9,7 @@
                         </div>
                         <p>من أجل الحصول علي عروض أفضل وخصوات بشكل مستمر عليك الاشتراك</p>
                         <form action="">
-                            <input type="email" placeholder="Enter your email">
+                            <input type="email" placeholder="أدخل بريدك الإلكتروني">
                             <button>
                                 أشترك ألأن
                             </button>

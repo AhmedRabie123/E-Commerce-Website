@@ -25,7 +25,7 @@
     <style>
         .center {
             margin: auto;
-            width: 50%;
+            width: 70%;
             text-align: center;
             padding: 30px;
         }
@@ -75,7 +75,7 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-        
+
         <!-- end slider section -->
 
         <!-- cart section -->
@@ -89,8 +89,10 @@
                         <th class="th_deg" style="width: 150px;">كمية المنتج</th>
                         <th class="th_deg" style="width: 90px;">السعر</th>
                         <th class="th_deg" style="width: 150px;">حذف</th>
+                        <th class="th_deg" style="width: 180px;">عرض المنتج</th>
                     </tr>
                 </thead>
+
                 <tbody>
 
                     @php
@@ -107,6 +109,8 @@
                             <td>E£ {{ $item->price }}</td>
                             <td><a class="btn btn-danger" onClick="return confirm('هل أنت متأكد من حذف هذا؟');"
                                     href="{{ route('remove_cart', $item->id) }}">إزالة المنتج</a></td>
+                            <td><a class="btn btn-info" href="{{ route('product_detail', $item->rProduct->id) }}">الذهاب الي
+                                    المنتج</a></td>
                         </tr>
 
                         @php
@@ -123,7 +127,7 @@
             <div>
                 <h1 style="font-size: 25px; padding-bottom: 15px;">تابع الطلب</h1>
                 <a class="btn btn-danger" href="{{ route('cash_order') }}">الدفع عند الاستلام</a>
-                <a class="btn btn-danger" href="">الدفع باستخدام البطاقة</a>
+                <a class="btn btn-danger" href="{{ route('stripe', $total_price) }}">الدفع باستخدام البطاقة</a>
             </div>
         </div>
 

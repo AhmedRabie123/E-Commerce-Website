@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\product;
 use App\Models\Cart;
 use App\Models\Order;
+use Session;
+use Stripe;
 use Auth;
+
 
 class HomeController extends Controller
 {
@@ -45,6 +48,7 @@ class HomeController extends Controller
         $product = product::where('id', $id)->first();
         return view('Front.product_detail', compact('product'));
     }
+ 
 
 
     // cart methods
@@ -105,7 +109,8 @@ class HomeController extends Controller
             return redirect()->route('login');
         }
    
-    }
+     }
+
 
     public function remove_cart($id)
     {
@@ -150,4 +155,58 @@ class HomeController extends Controller
         return redirect()->back()->with('success', '...سوف نتلقى طلبك. سنتواصل معك قريبا');
 
      }
+
+     // stripe methods
+
+     public function stripe($total_price)
+     {
+       return view('Front.stripe', compact('total_price'));
+     }
+
+     public function stripePost(Request $request, $total_price)
+    { 
+       // dd($total_price);
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    
+        Stripe\Charge::create ([
+                "amount" => $total_price * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Thanks For Payment." 
+        ]);
+
+
+        $user = Auth::user();
+        $user_id = $user->id;
+        $data = Cart::where('user_id', $user_id)->get();
+        //dd($data);
+
+        foreach($data as $data){
+           $order = new Order();
+
+           $order->name = $data->name;
+           $order->email = $data->email;
+           $order->phone = $data->phone;
+           $order->address = $data->address;
+           $order->product_title = $data->product_title;
+           $order->quantity = $data->quantity;
+           $order->price = $data->price;
+           $order->image = $data->image;
+           $order->product_id = $data->product_id;
+           $order->user_id = $data->user_id;
+           $order->payment_status = 'تم الدفع عن طريق البطاقة';
+           $order->delivery_status = 'يتم المعالجة';
+           $order->save();
+ 
+           // delete data from cart page after click cash on delivery button
+           $cart_id = $data->id;
+           $cart = Cart::find($cart_id);
+           $cart->delete();
+        }
+
+      
+        Session::flash('success', 'Payment successful!');
+              
+        return back();
+    }
 }

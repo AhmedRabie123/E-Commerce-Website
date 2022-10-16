@@ -53,14 +53,18 @@ Route::get('/product-delete/{id}',[AdminController::class, 'product_delete'])->n
 // product Detail Page
 Route::get('/product-detail/{id}', [HomeController::class, 'detail'])->name('product_detail');
 
-
 // add to cart Page
 
 Route::post('/add-cart/{id}', [HomeController::class, 'add_cart'])->name('add_cart');
 Route::get('/show-cart', [HomeController::class, 'show_cart'])->name('show_cart');
 Route::get('/remove-cart/{id}', [HomeController::class, 'remove_cart'])->name('remove_cart');
 
+
 // order section route
 
 Route::get('/cash-order', [HomeController::class, 'cash_order'])->name('cash_order');
 
+// Stripe section route
+
+Route::get('/stripe/{total_price}', [HomeController::class, 'stripe'])->name('stripe');
+Route::post('/stripe/{total_price}',[HomeController::class, 'stripePost'])->name('stripe.post');

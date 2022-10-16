@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
-
+ 
+    public function rProduct()
+    {
+        return $this->belongsTo(product::class, 'product_id');
+    }
 
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\category;
+use App\Models\Order;
 use App\Models\product;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -178,5 +180,33 @@ class AdminController extends Controller
         $product_single->delete();
 
         return redirect()->route('product')->with('success', 'تم حذف المنتج بنجاح');
+    }
+
+    // order method
+
+    public function show_order()
+    {
+        $order = Order::get();
+        return view('Admin.order', compact('order'));
+    }
+
+    public function delivered($id)
+    {
+        $order = Order::where('id', $id)->first();
+        $order->delivery_status = 'تم التوصيل';
+        $order->payment_status = 'مدفوع';
+
+        $order->save();
+
+        return redirect()->back()->with('success', 'تم تعديل وضع التسليم بنجاح');
+    }
+ 
+     // order pdf method
+
+    public function print_pdf($id)
+    {
+        $order = Order::where('id', $id)->first();
+        $pdf = PDF::loadview('Admin.pdf', compact('order'));
+        return $pdf->download('order_details.pdf');
     }
 }

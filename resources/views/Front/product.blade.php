@@ -8,7 +8,6 @@
         <div class="row">
 
             @foreach ($product as $item)
-            
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="box">
                         <div class="option_container">
@@ -22,12 +21,14 @@
                                     <div class="row">
 
                                         <div class="col-md-4">
-                                            <input type="number" name="quantity" value="1" min="1" style="width: 100px; border-radius: 20px">
+                                            <input type="number" name="quantity" value="1" min="1"
+                                                style="width: 100px; border-radius: 20px">
                                         </div>
+
                                         <div class="col-md-4">
                                             <input type="submit" value="أضف إلى السلة" style="border-radius: 30px">
                                         </div>
-                                        
+
                                     </div>
                                 </form>
                             </div>
@@ -63,7 +64,6 @@
                         </div>
                     </div>
                 </div>
-
             @endforeach
 
         </div>

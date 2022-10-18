@@ -36,17 +36,17 @@
                                         <table class="table table-bordered" id="example1">
                                             <thead>
                                                 <tr>
-                                                    <th>الرقم التسلسلي</th>
-                                                    <th>أسم الفئه</th>
-                                                    <th>Action</th>
+                                                    <th style="text-align: center">الرقم التسلسلي</th>
+                                                    <th style="text-align: center; width: 550px">أسم الفئه</th>
+                                                    <th style="text-align: center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
             
                                                @foreach ($categories as $row)
                                                <tr>
-                                                <td style="color: beige;">{{ $loop->iteration }}</td>
-                                                <td style="color: beige;">{{ $row->category_name }}</td>
+                                                <td style="color: beige; text-align: center">{{ $loop->iteration }}</td>
+                                                <td style="color: beige; text-align: center">{{ $row->category_name }}</td>
                                               
                                                 <td class="pt_10 pb_10">
                                                     <a href="{{ route('category_edit', $row->id) }}"

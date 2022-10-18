@@ -90,7 +90,15 @@
           </ul>
         </div>
       </li>
-
+ 
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="{{ route('order') }}">
+          <span class="menu-icon">
+            <i class="mdi mdi-playlist-play"></i>
+          </span>
+          <span class="menu-title">الطلبات</span>
+        </a>
+      </li>
    
     
     </ul>

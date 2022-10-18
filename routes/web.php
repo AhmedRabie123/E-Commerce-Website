@@ -25,9 +25,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+ 
 
+// Admin routes
 
-route::get('/redirect', [HomeController::class, 'redirect'])->name('redirect');
+route::get('/redirect', [HomeController::class, 'redirect'])->name('redirect')->middleware('auth','verified');
 
 route::get('/home', [AdminController::class, 'index'])->name('home');
 
@@ -49,6 +51,18 @@ Route::get('/product-edit/{id}',[AdminController::class, 'product_edit'])->name(
 Route::post('/product-update/{id}',[AdminController::class, 'product_update'])->name('product_update');
 Route::get('/product-delete/{id}',[AdminController::class, 'product_delete'])->name('product_delete');
 
+// order route
+
+route::get('/show-order', [AdminController::class, 'show_order'])->name('order');
+route::get('/delivered/{id}', [AdminController::class, 'delivered'])->name('delivered');
+
+// order pdf route
+
+route::get('/print-pdf/{id}', [AdminController::class, 'print_pdf'])->name('print_pdf');
+
+
+
+// front routes
 
 // product Detail Page
 Route::get('/product-detail/{id}', [HomeController::class, 'detail'])->name('product_detail');

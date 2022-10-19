@@ -1,7 +1,7 @@
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{{ url('/') }}"><img width="250" src="images/logo.png" alt="#" /></a>
+            <a class="navbar-brand" href="{{ url('/home') }}"><img width="250" src="images/logo.png" alt="#" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> </span>
@@ -9,29 +9,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                            <a class="nav-link" href="{{ url('/') }}">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" style="font-size: 13px;" href="{{ url('/') }}">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="true"> <span class="nav-label">الصفحات <span
+                            aria-haspopup="true" aria-expanded="true" style="font-size: 13px;" > <span class="nav-label">الصفحات <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="about.html">عننا</a></li>
-                            <li><a href="#Testimonials ">الشهادات & التوصيات</a></li>
+                            <li><a href="about.html" style="font-size: 13px;">عننا</a></li>
+                            <li><a href="#Testimonials" style="font-size: 13px;">الشهادات & التوصيات</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#product">المنتجات</a>
+                        <a class="nav-link" style="font-size: 13px;" href="#product">المنتجات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Services">الخدمات</a>
+                        <a class="nav-link" style="font-size: 13px;" href="#Services">الخدمات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#subscribe">تواصل معنا</a>
+                        <a class="nav-link" style="font-size: 13px;"  href="#subscribe">تواصل معنا</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('show_cart') }}">عربة التسوق</a>
+                        <a class="nav-link" style="font-size: 13px;"  href="{{ route('show_cart') }}">عربة التسوق</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-size: 13px;" href="{{ route('show_user_order') }}">الطلبات</a>
                     </li>
 
                     <form class="form-inline">
@@ -49,11 +53,11 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="btn btn-primary" href="{{ route('login') }}" style="margin-right: 10px;">تسجيل الدخول</a>
+                                <a class="btn btn-primary" style="font-size: 14px; margin-right: 10px;"  href="{{ route('login') }}">تسجيل الدخول</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="btn btn-info" href="{{ route('register') }}">تسجيل مستخدم جديد</a>
+                                <a class="btn btn-info" style="font-size: 14px;"  href="{{ route('register') }}">تسجيل مستخدم جديد</a>
                             </li>
                         @endauth
                     @endif

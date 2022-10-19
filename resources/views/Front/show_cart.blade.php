@@ -107,7 +107,7 @@
                             <td>{{ $item->product_title }}</td>
                             <td>{{ $item->quantity }}</td>
                             <td>E£ {{ $item->price }}</td>
-                            <td><a class="btn btn-danger" onClick="return confirm('هل أنت متأكد من حذف هذا؟');"
+                            <td><a class="btn btn-danger" onClick="return confirm('هل أنت متأكد من حذف هذا المنتج؟');"
                                     href="{{ route('remove_cart', $item->id) }}">إزالة المنتج</a></td>
                             <td><a class="btn btn-info" href="{{ route('product_detail', $item->rProduct->id) }}">الذهاب الي
                                     المنتج</a></td>

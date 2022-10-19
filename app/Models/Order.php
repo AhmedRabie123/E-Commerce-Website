@@ -10,4 +10,9 @@ class Order extends Model
 {
     use HasFactory;
     use Notifiable;
+
+    public function rProduct()
+    {
+        return $this->belongsTo(order::class, 'product_id');
+    }
 }

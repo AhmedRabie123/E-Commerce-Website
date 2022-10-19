@@ -65,9 +65,9 @@ route::get('/print-pdf/{id}', [AdminController::class, 'print_pdf'])->name('prin
 route::get('/send-email/{id}', [AdminController::class, 'send_email'])->name('send_email');
 Route::post('/user/email-submit/{id}',[AdminController::class, 'email_submit'])->name('email_submit');
 
+// order search route
 
-
-
+route::get('/search-order', [AdminController::class, 'search_order'])->name('search_order');
 
 
 
@@ -92,3 +92,20 @@ Route::get('/cash-order', [HomeController::class, 'cash_order'])->name('cash_ord
 
 Route::get('/stripe/{total_price}', [HomeController::class, 'stripe'])->name('stripe');
 Route::post('/stripe/{total_price}',[HomeController::class, 'stripePost'])->name('stripe.post');
+
+
+// show order && remove order route
+
+Route::get('/user/show-order', [HomeController::class, 'show_user_order'])->name('show_user_order');
+Route::get('/cancel-order/{id}', [HomeController::class, 'cancel_order'])->name('cancel_order');
+
+
+
+
+
+
+
+
+
+
+

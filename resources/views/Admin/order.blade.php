@@ -24,6 +24,15 @@
                     </div>
                 @endif
 
+                <div style="padding-left: 330px; padding-bottom: 30px;">
+                    <form action="{{ route('search_order') }}" method="get">
+                        @csrf
+                        <input type="text" style="color: black" name="search" placeholder="قم بالبحث عن الطلبات">
+                        <input type="submit" class="btn btn-outline-primary" value=" : بحث">
+                    </form>
+                </div>
+
+
                 <h1 style="font-size: 25px; text-align: center; padding-bottom: 30px; font-weight: bold;"> All Orders
                 </h1>
 
@@ -54,7 +63,7 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($order as $row)
+                                                @forelse ($order as $row)
                                                     <tr>
                                                         <td style="color:beige;">{{ $loop->iteration }}</td>
                                                         <td>
@@ -93,8 +102,19 @@
                                                                 class="btn btn-secondary">إرسال إيميل</a>
                                                         </td>
 
+
                                                     </tr>
-                                                @endforeach
+
+
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="10" style="text-align: center; color: red;">
+                                                            No Data Found
+                                                        </td>
+                                                    </tr>
+                                                       
+                                           
+                                                @endforelse
 
                                             </tbody>
                                         </table>

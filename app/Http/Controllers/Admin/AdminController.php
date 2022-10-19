@@ -7,18 +7,32 @@ use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\Order;
 use App\Models\product;
+use App\Models\User;
 use App\Notifications\SendEmailNotification;
 use Notification;
 use PDF;
 
 class AdminController extends Controller
 {
-  
+
     // admin home (dashboard)
 
     public function index()
     {
-        return view('Admin.home');
+        $total_product = product::count(); 
+        $total_order = Order::count(); 
+        $total_user = User::count(); 
+        $order = Order::all();
+        $total_revenue = 0;
+
+        foreach($order as $order){
+            $total_revenue = $total_revenue + $order->price;
+        }
+
+        $total_delivery_status = Order::where('delivery_status', 'تم التوصيل')->get()->count(); 
+        $total_processing_status = Order::where('delivery_status', 'يتم المعالجة')->get()->count(); 
+
+        return view('Admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivery_status','total_processing_status'));
     }
 
     //category function
@@ -35,9 +49,9 @@ class AdminController extends Controller
     }
 
     public function category_store(Request $request)
-    { 
+    {
         $request->validate([
-          'category_name' => 'required'
+            'category_name' => 'required'
         ]);
 
         $category = new category();
@@ -57,7 +71,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'category_name' => 'required'
-          ]);
+        ]);
 
         $category = category::where('id', $id)->first();
         $category->category_name = $request->category_name;
@@ -76,23 +90,23 @@ class AdminController extends Controller
 
     public function show_product()
     {
-         //product function
-  
+        //product function
+
         $products = product::orderBy('id', 'desc')->get();
         return view('Admin.product', compact('products'));
     }
 
     public function product_create()
-    { 
+    {
 
         $categories = category::get();
-       // $products = product::with('rCategory')->get();
+        // $products = product::with('rCategory')->get();
         return view('Admin.product_create', compact('categories'));
     }
 
     public function product_store(Request $request)
     {
- 
+
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -101,15 +115,15 @@ class AdminController extends Controller
             'quantity' => 'required',
             'price' => 'required'
 
-          ]);
+        ]);
 
         $products = new product();
-  
+
         $now = time();
         $ext = $request->file('image')->extension();
-        $final_name = 'product_'. '.' .$now. '.' .$ext;
+        $final_name = 'product_' . '.' . $now . '.' . $ext;
         $request->file('image')->move(public_path('images/'), $final_name);
-        
+
         $products->image = $final_name;
 
 
@@ -128,7 +142,7 @@ class AdminController extends Controller
     {
         $product_single = product::where('id', $id)->first();
         $categories = category::get();
-        return view('Admin.product_edit', compact('product_single','categories'));
+        return view('Admin.product_edit', compact('product_single', 'categories'));
     }
 
     public function product_update(Request $request, $id)
@@ -140,30 +154,29 @@ class AdminController extends Controller
             'category_id' => 'required',
             'quantity' => 'required',
             'price' => 'required'
-           
-          ]);
 
-          $product = product::where('id', $id)->first();
+        ]);
+
+        $product = product::where('id', $id)->first();
 
 
-          if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
 
             $request->validate([
                 'image' => 'image|mimes:jpg,png,gif,svg,jpeg',
             ]);
 
-             unlink(public_path('images/'. $product->image));
+            unlink(public_path('images/' . $product->image));
 
-             $now = time();
-             $ext = $request->file('image')->extension();
-             $final_name = 'product_'. '.' .$now. '.' .$ext;
-             $request->file('image')->move(public_path('images/'), $final_name);
-             
-             $product->image = $final_name;
+            $now = time();
+            $ext = $request->file('image')->extension();
+            $final_name = 'product_' . '.' . $now . '.' . $ext;
+            $request->file('image')->move(public_path('images/'), $final_name);
 
-          }
+            $product->image = $final_name;
+        }
 
-        
+
         $product->title = $request->title;
         $product->description = $request->description;
         $product->category_id = $request->category_id;
@@ -178,7 +191,7 @@ class AdminController extends Controller
     public function product_delete($id)
     {
         $product_single = product::where('id', $id)->first();
-        unlink(public_path('images/'. $product_single->image));
+        unlink(public_path('images/' . $product_single->image));
         $product_single->delete();
 
         return redirect()->route('product')->with('success', 'تم حذف المنتج بنجاح');
@@ -202,8 +215,8 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'تم تعديل وضع التسليم بنجاح');
     }
- 
-     // order pdf method
+
+    // order pdf method
 
     public function print_pdf($id)
     {
@@ -216,7 +229,6 @@ class AdminController extends Controller
     {
         $order = Order::where('id', $id)->first();
         return view('Admin.email_info', compact('order'));
-
     }
 
     public function email_submit(Request $request, $id)
@@ -230,12 +242,20 @@ class AdminController extends Controller
             'button' => $request->button,
             'url' => $request->url,
             'lastline' => $request->lastline,
-           
+
         ];
 
         Notification::Send($order, new SendEmailNotification($details));
 
         return redirect()->back()->with('success', 'تم إرسال البريد الالكتروني بنجاح');
+    }
 
+    public function search_order(Request $request)
+    {
+
+        $searchtext = $request->search;
+        $order = Order::where('name', 'LIKE', "%$searchtext%")->orWhere('email', 'LIKE', "%$searchtext%")->orWhere('phone', 'LIKE', "%$searchtext%")->orWhere('address', 'LIKE', "%$searchtext%")->orWhere('product_title', 'LIKE', "%$searchtext%")->get();
+
+        return view('Admin.order', compact('order'));
     }
 }

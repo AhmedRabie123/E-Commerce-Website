@@ -32,8 +32,20 @@ class HomeController extends Controller
         $user_type = Auth::user()->usertype;
 
         if ($user_type == '1') {
+            $total_product = product::count(); 
+            $total_order = Order::count(); 
+            $total_user = User::count(); 
+            $order = Order::all();
+            $total_revenue = 0;
+    
+            foreach($order as $order){
+                $total_revenue = $total_revenue + $order->price;
+            }
+    
+            $total_delivery_status = Order::where('delivery_status', 'تم التوصيل')->get()->count(); 
+            $total_processing_status = Order::where('delivery_status', 'يتم المعالجة')->get()->count(); 
 
-            return view('Admin.home');
+            return view('Admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivery_status','total_processing_status'));
         } else {
 
             $product = product::paginate(9);
@@ -209,5 +221,30 @@ class HomeController extends Controller
         Session::flash('success', 'Payment successful!');
               
         return back();
+    }
+
+    public function show_user_order()
+    {
+        if(Auth::id()){
+
+
+             $user = Auth::user();
+             $user_id = $user->id;
+             $order = Order::where('user_id', $user_id)->get();
+
+            return view('Front.order', compact('order'));
+        }else{
+            return redirect()->route('login');
+        }
+      
+    }
+
+    public function cancel_order($id)
+    {
+        $order = Order::where('id', $id)->first();
+        $order->delivery_status = 'قمت بإلغاء الطلب';
+        $order->save();
+
+        return redirect()->back()->with('success', 'قمت بإلغاء الطلب بنجاح');
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\Order;
 use App\Models\product;
+use App\Notifications\SendEmailNotification;
+use Notification;
 use PDF;
 
 class AdminController extends Controller
@@ -208,5 +210,32 @@ class AdminController extends Controller
         $order = Order::where('id', $id)->first();
         $pdf = PDF::loadview('Admin.pdf', compact('order'));
         return $pdf->download('order_details.pdf');
+    }
+
+    public function send_email($id)
+    {
+        $order = Order::where('id', $id)->first();
+        return view('Admin.email_info', compact('order'));
+
+    }
+
+    public function email_submit(Request $request, $id)
+    {
+        $order = Order::where('id', $id)->first();
+        $details = [
+
+            'greeting' => $request->subject,
+            'firstline' => $request->firstline,
+            'body' => $request->body,
+            'button' => $request->button,
+            'url' => $request->url,
+            'lastline' => $request->lastline,
+           
+        ];
+
+        Notification::Send($order, new SendEmailNotification($details));
+
+        return redirect()->back()->with('success', 'تم إرسال البريد الالكتروني بنجاح');
+
     }
 }

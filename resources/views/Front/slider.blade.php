@@ -23,7 +23,7 @@
                                     الإلكترونية.
                                 </p>
                                 <div class="btn-box">
-                                    <a href="{{ url('/') }}" class="btn1">
+                                    <a href="#product" class="btn1">
                                         تسوق الآن
                                     </a>
                                 </div>
@@ -51,7 +51,7 @@
                                     الإلكترونية.
                                 </p>
                                 <div class="btn-box">
-                                    <a href="{{ url('/') }}" class="btn1">
+                                    <a href="#product" class="btn1">
                                         تسوق الآن
                                     </a>
                                 </div>
@@ -79,7 +79,7 @@
                                     الإلكترونية.
                                 </p>
                                 <div class="btn-box">
-                                    <a href="{{ url('/') }}" class="btn1">
+                                    <a href="#product" class="btn1">
                                         تسوق الآن
                                     </a>
                                 </div>

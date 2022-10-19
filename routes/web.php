@@ -60,6 +60,16 @@ route::get('/delivered/{id}', [AdminController::class, 'delivered'])->name('deli
 
 route::get('/print-pdf/{id}', [AdminController::class, 'print_pdf'])->name('print_pdf');
 
+// order send email route
+
+route::get('/send-email/{id}', [AdminController::class, 'send_email'])->name('send_email');
+Route::post('/user/email-submit/{id}',[AdminController::class, 'email_submit'])->name('email_submit');
+
+
+
+
+
+
 
 
 // front routes

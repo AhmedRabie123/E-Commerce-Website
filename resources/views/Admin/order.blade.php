@@ -49,6 +49,7 @@
                                                     <th>حالة التسليم</th>
                                                     <th>تم التوصيل</th>
                                                     <th>PDF تحميل</th>
+                                                    <th>أرسل بريد الكتروني</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -73,14 +74,23 @@
                                                         <td class="pt_10 pb_10">
                                                             @if ($row->delivery_status == 'يتم المعالجة')
                                                                 <a href="{{ route('delivered', $row->id) }}"
-                                                                   onclick="return confirm('هل تريد تعديل حالة التسليم لهذا الطلب')" class="btn btn-primary">تم التوصيل</a>
+                                                                    onclick="return confirm('هل تريد تعديل حالة التسليم لهذا الطلب')"
+                                                                    class="btn btn-primary">تم التوصيل</a>
                                                             @else
                                                                 <p style="color: green;">تم التوصيل</p>
                                                             @endif
                                                         </td>
 
                                                         <td>
-                                                            <a href="{{ route('print_pdf', $row->id) }}"  onclick="return confirm('هل تريد تحميل هذا الطلب بواسطة PDF')" class="btn btn-info">PDFتحميل</a>
+                                                            <a href="{{ route('print_pdf', $row->id) }}"
+                                                                onclick="return confirm('هل تريد تحميل هذا الطلب بواسطة PDF')"
+                                                                class="btn btn-info">PDFتحميل</a>
+                                                        </td>
+
+                                                        <td>
+                                                            <a href="{{ route('send_email', $row->id) }}"
+                                                                onclick="return confirm('هل تريد إرسال إيميل الي هذا الشخص PDF')"
+                                                                class="btn btn-secondary">إرسال إيميل</a>
                                                         </td>
 
                                                     </tr>

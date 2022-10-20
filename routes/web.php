@@ -99,9 +99,10 @@ Route::post('/stripe/{total_price}',[HomeController::class, 'stripePost'])->name
 Route::get('/user/show-order', [HomeController::class, 'show_user_order'])->name('show_user_order');
 Route::get('/cancel-order/{id}', [HomeController::class, 'cancel_order'])->name('cancel_order');
 
+// Comment && Reply route
 
-
-
+Route::post('/add-comment', [HomeController::class, 'add_comment'])->name('add_comment');
+Route::post('/add-reply', [HomeController::class, 'add_reply'])->name('add_reply');
 
 
 

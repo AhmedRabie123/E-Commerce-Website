@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\product;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Comment;
+use App\Models\Reply;
 use Session;
 use Stripe;
 use Auth;
@@ -21,8 +23,9 @@ class HomeController extends Controller
     public function index()
     {
         $product = product::paginate(9);
-        
-        return view('Front.userpage', compact('product'));
+        $comment = Comment::orderBy('id', 'desc')->get();
+        $reply = Reply::all();
+        return view('Front.userpage', compact('product','comment','reply'));
     }
 
     // control to the user & the admin
@@ -49,7 +52,9 @@ class HomeController extends Controller
         } else {
 
             $product = product::paginate(9);
-            return view('Front.userpage', compact('product'));
+            $comment = Comment::orderBy('id', 'desc')->get();
+            $reply = Reply::all();
+            return view('Front.userpage', compact('product','comment','reply'));
         }
     }
 
@@ -223,6 +228,9 @@ class HomeController extends Controller
         return back();
     }
 
+
+    // show order && cancel order method
+
     public function show_user_order()
     {
         if(Auth::id()){
@@ -246,5 +254,46 @@ class HomeController extends Controller
         $order->save();
 
         return redirect()->back()->with('success', 'قمت بإلغاء الطلب بنجاح');
+    }
+
+    // Comment && Reply method
+
+    public function add_comment(Request $request)
+    {
+        if(Auth::id()){
+
+            $comment = new Comment();
+
+            $comment->name = Auth::user()->name;
+            $comment->user_id = Auth::user()->id;
+            $comment->comment = $request->comment;
+            $comment->save();
+ 
+            return redirect()->back()->with('success', 'قمت بأضافة التعليق بنجاح');
+
+
+        }else{
+            return redirect()->route('login');
+        }
+    }
+
+    public function add_reply(Request $request)
+    {
+        if(Auth::id()){
+
+            $reply = new Reply();
+
+            $reply->name = Auth::user()->name;
+            $reply->user_id = Auth::user()->id;
+            $reply->comment_id = $request->commentId;
+            $reply->reply = $request->reply;
+            $reply->save();
+ 
+            return redirect()->back()->with('success', 'قمت بأضافة الرد بنجاح');
+
+
+        }else{
+            return redirect()->route('login');
+        }
     }
 }

@@ -201,7 +201,7 @@ class AdminController extends Controller
 
     public function show_order()
     {
-        $order = Order::get();
+        $order = Order::orderBy('id', 'desc')->get();
         return view('Admin.order', compact('order'));
     }
 

@@ -6,6 +6,9 @@
                 لماذا تتسوق معنا
             </h2>
         </div>
+        <div>
+            <button style="margin-left: 484px; margin-top: 22px; font-size: 20px;" class="btn btn-danger">روْية جميع الخدمات</button>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="box ">

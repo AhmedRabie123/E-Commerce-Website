@@ -2,6 +2,11 @@
 <html>
 
 <head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+    integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,16 +16,16 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="">
     <title>Famms - Fashion HTML Template</title>
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="front/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/bootstrap.css') }}" />
     <!-- font awesome style -->
-    <link href="front/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ asset('front/css/font-awesome.min.css') }}" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="front/css/style.css" rel="stylesheet" />
+    <link href="{{ asset('front/css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="front/css/responsive.css" rel="stylesheet" />
+    <link href="{{ asset('front/css/responsive.css') }}" rel="stylesheet" />
 
     <style>
         .center {
@@ -60,6 +65,8 @@
 </head>
 
 <body>
+
+    @include('sweetalert::alert')
 
     <div class="hero_area">
 
@@ -107,7 +114,7 @@
                             <td>{{ $item->product_title }}</td>
                             <td>{{ $item->quantity }}</td>
                             <td>E£ {{ $item->price }}</td>
-                            <td><a class="btn btn-danger" onClick="return confirm('هل أنت متأكد من حذف هذا المنتج؟');"
+                            <td><a class="btn btn-danger" onclick="confirmation(event)"
                                     href="{{ route('remove_cart', $item->id) }}">إزالة المنتج</a></td>
                             <td><a class="btn btn-info" href="{{ route('product_detail', $item->rProduct->id) }}">الذهاب الي
                                     المنتج</a></td>
@@ -145,6 +152,36 @@
 
             </p>
         </div>
+
+
+<script>
+ 
+ function confirmation(ev){
+    ev.preventDefault();
+    var urlToRedirect = ev.currentTarget.getAttribute('href');
+    console.log(urlToRedirect);
+    swal({
+        title: "هل أنت متأكد من إزالة هذا المنتج",
+        text: "! سوف تكون قادرًا على التراجع عن هذا",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willcanel) => {
+        if(willcanel){
+
+            window.location.href = urlToRedirect;
+
+        }
+
+    });
+ }
+
+</script>
+
+
+
+
         <!-- jQery -->
         <script src="front/js/jquery-3.4.1.min.js"></script>
         <!-- popper js -->

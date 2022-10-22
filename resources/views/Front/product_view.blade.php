@@ -2,11 +2,11 @@
     <div class="container" id="product">
         <div class="heading_container heading_center">
             <h2>
-                عن <span>منتجاتنا </span>
+                جميع <span>منتجاتنا </span>
             </h2> <br><br>
 
             <div>
-                <form action="{{ route('search_product') }}" method="get">
+                <form action="{{ route('product_search') }}" method="get">
                     @csrf
                     <input style="width: 400px;" type="text" name="search" class="form-control"
                         placeholder="قم بالبحث عن منتجكك الذي تريد">

@@ -51,6 +51,7 @@ Route::get('/product-edit/{id}',[AdminController::class, 'product_edit'])->name(
 Route::post('/product-update/{id}',[AdminController::class, 'product_update'])->name('product_update');
 Route::get('/product-delete/{id}',[AdminController::class, 'product_delete'])->name('product_delete');
 
+
 // order route
 
 route::get('/show-order', [AdminController::class, 'show_order'])->name('order');
@@ -68,8 +69,6 @@ Route::post('/user/email-submit/{id}',[AdminController::class, 'email_submit'])-
 // order search route
 
 route::get('/search-order', [AdminController::class, 'search_order'])->name('search_order');
-
-
 
 
 // front routes
@@ -104,9 +103,17 @@ Route::get('/cancel-order/{id}', [HomeController::class, 'cancel_order'])->name(
 Route::post('/add-comment', [HomeController::class, 'add_comment'])->name('add_comment');
 Route::post('/add-reply', [HomeController::class, 'add_reply'])->name('add_reply');
 
+// product search in home page route
 
+route::get('/search-product', [HomeController::class, 'search_product'])->name('search_product');
 
+// product search in product page route
 
+route::get('/product-search', [HomeController::class, 'product_search'])->name('product_search');
+
+// product all route
+
+route::get('/all-products', [HomeController::class, 'all_product'])->name('all_product');
 
 
 

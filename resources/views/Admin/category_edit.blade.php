@@ -3,7 +3,7 @@
 
 <head>
     <!-- Required meta tags -->
-    <base href="/public">
+   
     @include('Admin.css')
 </head>
 

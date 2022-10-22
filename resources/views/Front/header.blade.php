@@ -1,7 +1,7 @@
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{{ url('/home') }}"><img width="250" src="images/logo.png" alt="#" /></a>
+            <a class="navbar-brand" href="{{ url('/') }}"><img width="250" src="{{ asset('images/logo.png') }}" alt="#" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> </span>
@@ -21,7 +21,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size: 13px;" href="#product">المنتجات</a>
+                        <a class="nav-link" style="font-size: 13px;" href="{{ route('all_product') }}">المنتجات</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-size: 13px;" href="#Services">الخدمات</a>

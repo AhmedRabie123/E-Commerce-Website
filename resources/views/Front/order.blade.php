@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <base href="/public">
+    {{-- <base href="/public"> This code is in the event that there is a mistake in the design, so I write it to correct the shape in the event that I do not write the asset --}}
     <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,16 +12,16 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="">
     <title>Famms - Fashion HTML Template</title>
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="front/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/bootstrap.css') }}" />
     <!-- font awesome style -->
-    <link href="front/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ asset('front/css/font-awesome.min.css') }}" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="front/css/style.css" rel="stylesheet" />
+    <link href="{{ asset('front/css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="front/css/responsive.css" rel="stylesheet" />
+    <link href="{{ asset('front/css/responsive.css') }}" rel="stylesheet" />
 
     <style>
         .center {

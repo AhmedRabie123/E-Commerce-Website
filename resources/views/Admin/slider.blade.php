@@ -14,10 +14,8 @@
         @include('Admin.header')
         <!-- partial -->
 
-
         <div class="main-panel">
             <div class="content-wrapper">
-
 
                 @if (session()->has('success'))
                     <div class="alert alert-success">
@@ -26,8 +24,8 @@
                     </div>
                 @endif
 
-                <a href="{{ route('product_create') }}"><button type="button" class="btn btn-primary">إضافة
-                        منتج</button></a>
+                <a href="{{ route('slider_create') }}"><button type="button" class="btn btn-primary">إضافة
+                        سلايدر</button></a>
 
                 <div class="section-body">
                     <div class="row">
@@ -39,37 +37,32 @@
                                             <thead>
                                                 <tr style="background: rgb(43, 62, 72);">
                                                     <th>SL</th>
-                                                    <th>صورة المنتج</th>
-                                                    <th>عنوان المنتج</th>
-                                                    <th>وصف المنتج</th>
-                                                    <th>فئة المنتج</th>
-                                                    <th>الكميه المتوفره</th>
-                                                    <th>السعر</th>
-                                                    <th>قيمة الخصم</th>
+                                                    <th>صورة السلايدر</th>
+                                                    <th>العنوان الاول للسلايدر</th>
+                                                    <th>العنوان الثاني للسلايدر</th>
+                                                    <th>تفاصيل السلايدر</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($products as $row)
+                                                @foreach ($slider as $row)
                                                     <tr>
                                                         <td style="color:beige;">{{ $loop->iteration }}</td>
                                                         <td>
                                                             <img src="{{ asset('images/' . $row->image) }}"
-                                                                alt="" style="height: 86px;">
+                                                                alt="" style="height: 100px; width: 100px;">
                                                         </td>
                                                         <td style="color:beige;">{{ $row->title }}</td>
-                                                        <td style="color:beige;">{{ $row->description }}</td>
-                                                        <td style="color:beige;">{{ $row->category_id }}</td>
-                                                        <td style="color:beige;">{{ $row->quantity }}</td>
-                                                        <td style="color:beige;">{{ $row->price }}</td>
-                                                        <td style="color:beige;">{{ $row->discount_price }}</td>
+                                                        <td style="color:beige;">{{ $row->sub_title }}</td>
+                                                        <td style="color:beige;">{{ $row->detail }}</td>
                                                         <td class="pt_10 pb_10">
-                                                            <a href="{{ route('product_edit', $row->id) }}"
+                                                            <a href="{{ route('slider_edit', $row->id) }}"
                                                                 class="btn btn-primary">تعديل</a>
-                                                            <a href="{{ route('product_delete', $row->id) }}"
+                                                            <a href="{{ route('slider_delete', $row->id) }}"
+                                                                onClick="return confirm('هل انت متأكد من حذف هذا ؟');"
                                                                 class="btn btn-danger"
-                                                                onClick="return confirm('هل انت متأكد من حذف هذا ؟');">حذف</a>
+                                                                onClick="return confirm('Are you sure?');">حذف</a>
                                                         </td>
 
                                                     </tr>
@@ -87,6 +80,8 @@
 
             </div>
         </div>
+
+
         <!-- container-scroller -->
         <!-- plugins:js -->
         @include('Admin.script')

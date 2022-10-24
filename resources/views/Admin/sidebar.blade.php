@@ -64,6 +64,24 @@
           <span class="menu-title">لوحة التحكم</span>
         </a>
       </li>
+
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="{{ route('slider_show') }}">
+          <span class="menu-icon">
+            <i class="mdi mdi-playlist-play"></i>
+          </span>
+          <span class="menu-title">سلايدر</span>
+        </a>
+      </li>
+
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="{{ route('about_show') }}">
+          <span class="menu-icon">
+            <i class="mdi mdi-playlist-play"></i>
+          </span>
+          <span class="menu-title">عننا</span>
+        </a>
+      </li>
  
          
       <li class="nav-item menu-items">

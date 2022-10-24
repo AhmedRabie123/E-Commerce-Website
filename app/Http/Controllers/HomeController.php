@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
@@ -11,6 +10,8 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Comment;
 use App\Models\Reply;
+use App\Models\About;
+use App\Models\Slider;
 use Session;
 use Stripe;
 use Auth;
@@ -354,4 +355,18 @@ class HomeController extends Controller
 
         return view('Front.all_product', compact('product', 'comment', 'reply'));
     }
+
+
+    public function about()
+    {
+        $about = About::where('id', '1')->first();
+        return view('Front.about', compact('about'));
+    }
+
+    public function slider()
+    {
+        $slider = Slider::orderBy('id', 'desc')->get();
+        return view('Front.userpage', compact('slider'));
+    }
+
 }

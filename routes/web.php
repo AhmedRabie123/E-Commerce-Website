@@ -70,6 +70,32 @@ Route::post('/user/email-submit/{id}',[AdminController::class, 'email_submit'])-
 
 route::get('/search-order', [AdminController::class, 'search_order'])->name('search_order');
 
+// About route
+
+route::get('/about-show', [AdminController::class, 'about_show'])->name('about_show');
+route::post('/about-update', [AdminController::class, 'about_update'])->name('about_update');
+
+// slider route
+
+route::get('/show-slider', [AdminController::class, 'show_slider'])->name('slider_show');
+Route::get('/slider-create',[AdminController::class, 'slider_create'])->name('slider_create');
+Route::post('/slider-store',[AdminController::class, 'slider_store'])->name('slider_store');
+Route::get('/slider-edit/{id}',[AdminController::class, 'slider_edit'])->name('slider_edit');
+Route::post('/slider-update/{id}',[AdminController::class, 'slider_update'])->name('slider_update');
+Route::get('/slider-delete/{id}',[AdminController::class, 'slider_delete'])->name('slider_delete');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // front routes
 
@@ -115,5 +141,11 @@ route::get('/product-search', [HomeController::class, 'product_search'])->name('
 
 route::get('/all-products', [HomeController::class, 'all_product'])->name('all_product');
 
+// product all route
 
+route::get('/about', [HomeController::class, 'about'])->name('about');
+
+// product all route
+
+route::get('/slider', [HomeController::class, 'slider'])->name('slider');
 

@@ -16,7 +16,7 @@
                             aria-haspopup="true" aria-expanded="true" style="font-size: 13px;" > <span class="nav-label">الصفحات <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="about.html" style="font-size: 13px;">عننا</a></li>
+                            <li><a href="{{ route('about') }}" style="font-size: 13px;">عننا</a></li>
                             <li><a href="#Testimonials" style="font-size: 13px;">الشهادات & التوصيات</a></li>
                         </ul>
                     </li>

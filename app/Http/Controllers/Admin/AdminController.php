@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\Order;
 use App\Models\product;
+use App\Models\Slider;
 use App\Models\User;
 use App\Notifications\SendEmailNotification;
 use Notification;
@@ -310,6 +312,7 @@ class AdminController extends Controller
     public function email_submit(Request $request, $id)
     {
         if (Auth::id()) {
+
             $order = Order::where('id', $id)->first();
             $details = [
 
@@ -325,7 +328,9 @@ class AdminController extends Controller
             Notification::Send($order, new SendEmailNotification($details));
 
             return redirect()->back()->with('success', 'تم إرسال البريد الالكتروني بنجاح');
+
         } else {
+
             return redirect()->route('login');
         }
     }
@@ -333,12 +338,194 @@ class AdminController extends Controller
     public function search_order(Request $request)
     {
         if (Auth::id()) {
+
             $searchtext = $request->search;
             $order = Order::where('name', 'LIKE', '%' . $searchtext . '%')->orWhere('email', 'LIKE', "%$searchtext%")->orWhere('phone', 'LIKE', "%$searchtext%")->orWhere('address', 'LIKE', "%$searchtext%")->orWhere('product_title', 'LIKE', "%$searchtext%")->get();
 
             return view('Admin.order', compact('order'));
+
         } else {
+
             return redirect()->route('login');
         }
     }
+
+    // About methods
+
+    public function about_show()
+    {
+        if(Auth::id()){
+
+            $about = About::get();
+            return view('Admin.About_page', compact('about'));
+
+        }else{
+
+            return redirect()->route('login');
+        }
+        
+    }
+
+    public function about_update(Request $request)
+    {
+        if(Auth::id()){
+
+            $request->validate([
+                'about_title' => 'required|',
+                'about_detail' => 'required|'
+            ]);
+    
+            $about = About::where('id', '1')->first();
+    
+            $about->about_title = $request->about_title;
+            $about->about_detail = $request->about_detail;
+           
+            $about->update();
+    
+            return redirect()->route('about')->with('success', '..حول الصفحة تم تحديثها بنجاح');
+        }else{
+
+            return redirect()->route('login');
+        }
+
+    }
+
+    // slider methods
+
+    public function show_slider()
+    {
+        if(Auth::id()){
+
+            $slider = Slider::orderBy('id', 'desc')->get();
+            return view('Admin.slider', compact('slider'));
+
+        }else{
+
+            return redirect()->route('login');
+        }
+        
+    }
+
+    public function slider_create()
+    {
+        if(Auth::id()){
+
+            return view('Admin.slider_create');
+
+        }else{
+
+            return redirect()->route('login');
+        }
+       
+    }
+
+    public function slider_store(Request $request)
+    {
+        if(Auth::id()){
+
+            $request->validate([
+
+                'title' => 'required|',
+                'sub_title' => 'required|',
+                'detail' => 'required|',
+                'image' => 'required|image|mimes:jpg,jpeg,png,svg,gif',
+    
+            ]);
+    
+            $slider = new Slider();
+    
+            $now = time();
+            $ext = $request->file('image')->extension();
+            $final_name = 'slider_' . $now . '-' . $ext;
+            $request->file('image')->move(public_path('images/'),$final_name);
+            $slider->image = $final_name;
+    
+            $slider->title = $request->title;
+            $slider->sub_title = $request->sub_title;
+            $slider->detail = $request->detail;
+            $slider->save();
+    
+            return redirect()->route('slider_show')->with('success', '..تم إضافة السلايدر بنجاح');
+
+        }else{
+            return redirect()->route('login');
+        }
+      
+
+    }
+
+    public function slider_edit($id)
+    {
+        if(Auth::id()){
+
+            $slider_single = Slider::where('id', $id)->first();
+            return view('Admin.slider_edit', compact('slider_single'));
+
+        }else{
+
+            
+
+        }
+      
+    }
+
+    public function slider_update(Request $request, $id)
+    {return redirect()->route('login');
+       if(Auth::id()){
+
+        $request->validate([
+  
+            'image' => 'image|mimes:jpg,jpeg,png,svg,gif'
+
+        ]);
+
+        $slider = Slider::where('id', $id)->first();
+
+        if($request->hasFile('image')){
+
+            unlink(public_path('images/'. $slider->image));
+
+            $now = time();
+            $ext = $request->file('image')->extension();
+            $final_name = 'slider_' . $now . '-' . $ext;
+            $request->file('image')->move(public_path('images/'),$final_name);
+            $slider->image = $final_name;
+
+        }
+
+
+        $slider->title = $request->title;
+        $slider->sub_title = $request->sub_title;
+        $slider->detail = $request->detail;
+        $slider->update();
+
+        return redirect()->route('slider_show')->with('success', '..تم تعديل السلايدر بنجاح');
+
+       }else{
+
+        return redirect()->route('login');
+       }
+        
+
+    }
+
+    public function slider_delete($id)
+    {
+        if(Auth::id()){
+
+            $slider_single = Slider::where('id', $id)->first();
+            unlink(public_path('images/'. $slider_single->image));
+            $slider_single->delete();
+
+            return redirect()->route('slider_show')->with('success', '..تم حذف السلايدر بنجاح');
+
+        }else{
+            
+            return redirect()->route('login');
+        }
+      
+
+
+    }
+
 }
